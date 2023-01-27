@@ -1,0 +1,70 @@
+#!/bin/bash 
+
+#Executing this task and attaching all the snip in main branch for your reference
+
+echo "Enter the first variable: "
+read var1
+echo "Enter the second variable: "
+read var2
+
+if [ "$var1" == "$var2" ]; then
+        echo "Both variables are same. Hence, performing required action."
+        echo "welcome" | tee file{1..10}.txt
+        ls
+        cat file{1..10}.txt
+        echo "10 files with word welcome in it were created"
+        cd ..
+        pwd
+        ls
+        tar -cvzf task.tar.gz task-directory
+        echo "file compression success!"
+        ls
+        sudo yum update -y
+        sudo yum install git -y
+        git clone https://github.com/Razack619/guvi-task-round1
+        ls
+        cd guvi-task-round1
+        git checkout -b master main
+        git checkout master
+        cd ..
+        ls
+        mv -v task.tar.gz ~/guvi-task-round1
+        cd guvi-task-round1
+        ls
+        echo "activating git"
+        git add .
+        git status
+        git commit -m "moving to master branch"
+        git push -f origin master
+
+else
+        echo "Both variables are different. Hence, performing required action."
+        echo "welcome" | tee file{1..10}.txt
+        ls
+        cat file{1..10}.txt
+        echo "10 files with word welcome in it were created"
+        cd ..
+        pwd
+        ls
+        sudo yum update -y
+        sudo yum install git -y
+        git clone https://github.com/Razack619/guvi-task-round1
+        ls
+        cd guvi-task-round1
+        git checkout -b develop main
+        git checkout develop
+        cd ..
+        ls
+        cd task-directory
+        ls
+        mv -v *.txt ~/guvi-task-round1
+        mv -v script.sh ~/guvi-task-round1
+        cd ..
+        pwd
+        cd guvi-task-round1
+        ls
+        echo "activating git"
+        git add .
+        git commit -m "all files in the directory moving as per the requirement"
+        git push -f origin develop
+fi
